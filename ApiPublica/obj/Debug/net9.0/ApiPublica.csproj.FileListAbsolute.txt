@@ -33,3 +33,4 @@ C:\Users\labsfiap\MicrosservicosPOC\ApiPublica\obj\Debug\net9.0\refint\ApiPublic
 C:\Users\labsfiap\MicrosservicosPOC\ApiPublica\obj\Debug\net9.0\ApiPublica.pdb
 C:\Users\labsfiap\MicrosservicosPOC\ApiPublica\obj\Debug\net9.0\ApiPublica.genruntimeconfig.cache
 C:\Users\labsfiap\MicrosservicosPOC\ApiPublica\obj\Debug\net9.0\ref\ApiPublica.dll
+C:\Users\labsfiap\MicrosservicosPOC\ApiPublica\obj\Debug\net9.0\ApiPublica.sourcelink.json

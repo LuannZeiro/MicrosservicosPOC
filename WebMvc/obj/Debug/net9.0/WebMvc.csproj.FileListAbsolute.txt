@@ -111,3 +111,4 @@ C:\Users\labsfiap\MicrosservicosPOC\WebMvc\obj\Debug\net9.0\refint\WebMvc.dll
 C:\Users\labsfiap\MicrosservicosPOC\WebMvc\obj\Debug\net9.0\WebMvc.pdb
 C:\Users\labsfiap\MicrosservicosPOC\WebMvc\obj\Debug\net9.0\WebMvc.genruntimeconfig.cache
 C:\Users\labsfiap\MicrosservicosPOC\WebMvc\obj\Debug\net9.0\ref\WebMvc.dll
+C:\Users\labsfiap\MicrosservicosPOC\WebMvc\obj\Debug\net9.0\WebMvc.sourcelink.json
