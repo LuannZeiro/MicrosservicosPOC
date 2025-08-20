@@ -2,10 +2,9 @@ using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Adiciona HttpClient para consumir API pública
 builder.Services.AddHttpClient("PublicApi", client =>
 {
-    client.BaseAddress = new Uri("https://api.publica.com/"); // substitua pelo endpoint real
+    client.BaseAddress = new Uri("https://api.publica.com/");
     client.Timeout = TimeSpan.FromSeconds(10);
 });
 
