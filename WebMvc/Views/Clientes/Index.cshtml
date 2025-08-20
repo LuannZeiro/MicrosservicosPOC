@@ -1,0 +1,29 @@
+@model List<Domain.Entities.Cliente>
+
+@{
+    ViewData["Title"] = "Lista de Clientes";
+}
+
+<h2>Clientes</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cliente in Model)
+        {
+            <tr>
+                <td>@cliente.Id</td>
+                <td>@cliente.Nome</td>
+                <td>@cliente.Email</td>
+                <td>@cliente.Telefone</td>
+            </tr>
+        }
+    </tbody>
+</table>
