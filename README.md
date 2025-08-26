@@ -57,8 +57,8 @@ MicrosservicosPOC/
 
 ---
 
-## System Design
-# Visão Geral
+# System Design
+## Visão Geral
 flowchart LR
     subgraph Client["Usuário (Browser)"]
         UI[WebMvc (ASP.NET MVC)]
@@ -83,7 +83,7 @@ flowchart LR
     A1 <--> |EF Core| DB
     A2 --> |HttpClient + Resilience| PUB
 
-# Fluxo 1 — Listagem de Clientes (WebMvc → ApiOracle → Oracle)
+## Fluxo 1 — Listagem de Clientes (WebMvc → ApiOracle → Oracle)
 sequenceDiagram
     participant B as Browser
     participant MVC as WebMvc (MVC)
@@ -97,7 +97,7 @@ sequenceDiagram
     API-->>MVC: 200 OK (JSON clientes)
     MVC-->>B: HTML (lista renderizada)
 
-# Fluxo 2 — Consumo de API Pública (WebMvc → ApiPublica → API Externa)
+## Fluxo 2 — Consumo de API Pública (WebMvc → ApiPublica → API Externa)
 sequenceDiagram
     participant B as Browser
     participant MVC as WebMvc (MVC)
