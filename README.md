@@ -57,33 +57,6 @@ MicrosservicosPOC/
 
 ---
 
-## Rodando o Projeto Localmente
-
-1. Clone o repositório:
-
-```bash
-git clone https://github.com/luannzeiro/MicrosservicosPOC.git
-cd MicrosservicosPOC
-
-
-## Rodar WebAPI com Oracle:
-
-cd ApiOracle
-dotnet run
-# Swagger: http://localhost:5289/swagger
-
-## Rodar WebAPI consumindo API pública:
-
-cd ApiPublica
-dotnet run
-# Swagger: http://localhost:5XXX/swagger
-
-## Rodar MVC WebMvc:
-
-cd WebMvc
-dotnet run
-# Acesse: http://localhost:5000/Clientes/Index
-
 ## System Design
 # Visão Geral
 flowchart LR
@@ -160,3 +133,33 @@ flowchart TB
     W --> O
     W --> P
     O --> DB
+
+
+---
+## Rodando o Projeto Localmente
+
+1. Clone o repositório:
+
+```bash
+git clone https://github.com/luannzeiro/MicrosservicosPOC.git
+cd MicrosservicosPOC
+
+
+## Rodar WebAPI com Oracle:
+
+cd ApiOracle
+dotnet run
+# Swagger: http://localhost:5289/swagger
+
+## Rodar WebAPI consumindo API pública:
+
+cd ApiPublica
+dotnet run
+# Swagger: http://localhost:5XXX/swagger
+
+## Rodar MVC WebMvc:
+
+cd WebMvc
+dotnet run
+# Acesse: http://localhost:5000/Clientes/Index
+
