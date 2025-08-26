@@ -83,3 +83,80 @@ dotnet run
 cd WebMvc
 dotnet run
 # Acesse: http://localhost:5000/Clientes/Index
+
+## System Design
+# Visão Geral
+flowchart LR
+    subgraph Client["Usuário (Browser)"]
+        UI[WebMvc (ASP.NET MVC)]
+    end
+
+    subgraph S1["Microsserviços"]
+        A1[ApiOracle<br/>.NET WebAPI]
+        A2[ApiPublica<br/>.NET WebAPI]
+    end
+
+    subgraph Data["Persistência"]
+        DB[(Oracle Database)]
+    end
+
+    subgraph Ext["Serviços Externos"]
+        PUB[API Pública REST]
+    end
+
+    UI -->|HTTP REST| A1
+    UI -->|HTTP REST| A2
+
+    A1 <--> |EF Core| DB
+    A2 --> |HttpClient + Resilience| PUB
+
+# Fluxo 1 — Listagem de Clientes (WebMvc → ApiOracle → Oracle)
+sequenceDiagram
+    participant B as Browser
+    participant MVC as WebMvc (MVC)
+    participant API as ApiOracle (WebAPI)
+    participant DB as Oracle DB
+
+    B->>MVC: GET /Clientes/Index
+    MVC->>API: GET /clientes
+    API->>DB: SELECT * FROM Clientes
+    DB-->>API: ResultSet
+    API-->>MVC: 200 OK (JSON clientes)
+    MVC-->>B: HTML (lista renderizada)
+
+# Fluxo 2 — Consumo de API Pública (WebMvc → ApiPublica → API Externa)
+sequenceDiagram
+    participant B as Browser
+    participant MVC as WebMvc (MVC)
+    participant PAPI as ApiPublica (WebAPI)
+    participant EXT as API Pública
+
+    B->>MVC: GET /Clientes/Index
+    par Buscar clientes
+        MVC->>ApiOracle: GET /clientes
+    and Buscar info pública
+        MVC->>PAPI: GET /externo/info
+        PAPI->>EXT: GET /public-endpoint
+        EXT-->>PAPI: 200 (payload)
+        PAPI-->>MVC: 200 (dados tratados)
+    end
+    MVC-->>B: HTML com dados combinados
+
+Implantação Local
+flowchart TB
+    subgraph Machine["Dev Machine (localhost)"]
+        subgraph Proc1["Processo 1"]
+            W[WebMvc :5000]
+        end
+        subgraph Proc2["Processo 2"]
+            O[ApiOracle :5289]
+        end
+        subgraph Proc3["Processo 3"]
+            P[ApiPublica :52xx]
+        end
+        DB[(Oracle)]
+    end
+
+    W --> O
+    W --> P
+    O --> DB
